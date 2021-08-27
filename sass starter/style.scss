@@ -1,0 +1,162 @@
+*{
+margin: 5;
+padding: 0;
+}
+
+//below is a scss variable declaration that holds a color property
+$color-primary:rgb(157, 255, 0);
+$color-secondary:rgb(241, 182, 18);
+$color-tertiary:rgb(248, 10, 157);
+$color-textdark:grey;
+$color-text-light:#eee;
+
+$width-button:100px;
+
+//creating a mixin with name clear fix
+@mixin clearfix {
+    &::after{
+        /*the pseudo element is used to fix the collapse of the naviagtion element after float has been initialized to it*/
+      content: "";
+      clear: both;
+      display: table;
+    }
+}
+
+//passing data to mixings using content @content
+//used to pass entire lines of codes
+//create a mixin ie
+@mixin  data{
+    @media (max: width 600px){
+        @content;
+}
+}
+
+// then pass data to mixin from an element ie
+html{
+    @include data{font-size:50rem}
+}
+
+
+//using @if statements with mixins and passed paramenter
+@mixin respond($breakpoint) {
+ @if $breakpoint == phone {
+//code
+ }
+}
+//then calling it in element
+@include respond(phone);
+
+//can also pass the content and parameter the same time
+//ie
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max: width 600px){
+            @content;
+    }
+   
+    }
+   }
+   //then in element  
+   html{
+    @include data{font-size:50rem}
+    }
+
+
+
+
+
+
+
+//passing an argument to the mixin
+@mixin style-link-text($color) {
+    text-decoration: none;
+text-transform: uppercase;
+color: $color;
+
+}
+
+
+nav{
+    margin: 30px;
+    background-color: $color-primary;
+    //to call a mixin
+    @include clearfix;
+   
+}
+
+//example of a an adding function
+@function adding ($a,$b){
+    @return $a+$b;
+}
+
+.navigation{
+    /*when you use float the element in the nav collapse and thus loose its heignt it is fixed using nav 
+    pseudo element after above found in the mixin*/
+    float: left;
+    list-style: none;
+    /*since li are a child of navigation they are called by writting them inside the selector of the parent
+    ie Below is the nesting property of sass: select li inside the navigation.
+    */
+    li{
+display: inline-block;
+
+margin-left:adding(15, 15) *1px; //we multiply it by 1px so as to give the result a unit in this case px
+
+   //calling the first child of navigation using the first child a psedoclass
+/*the & takes the PATH above it in this case .navigation li  thus &: means 
+  .navigation li:last-child,
+*/
+ &:last-child{
+    margin:0px
+  }
+
+  a{ //selecting a element inside the li
+@include style-link-text($color-textdark);
+
+  }
+
+    }
+}
+
+//creating extends is place holder
+//externds are only used for related elements only
+%button-placeholder{
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100px;
+    width:$width-button ;
+    
+    //calling the mixing and passing desired color to its parameter 
+    @include style-link-text($color-text-light);
+}
+
+.buttons{
+    float: right;
+}
+.btn-main{  //styling the main button
+    
+    //the pseudoclass nested below are for the main button
+    &:link{
+        //calling an extend or placeholder
+        @extend %button-placeholder;
+        background-color: $color-secondary;
+
+    }
+    &:hover{
+        //darken is a Sass function used for darkening colors 
+        //15% is used to set the level percent to darken
+        background-color: darken($color-secondary, 15%);
+
+    }
+}
+
+.btn-hot{
+    &:link{
+        @extend %button-placeholder;
+background-color: $color-tertiary;
+    }
+    &:hover{
+        background-color:lighten($color-tertiary, 10%) ;
+    }
+}

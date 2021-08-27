@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body{
+           
+            background-color: #191919;
+        }
+        
+        form{
+            align-items: center;
+            align-content: center;
+            position: absolute;
+            width: 400px;
+            background-color:white;
+            left: 50%;
+            top: 50%;
+            height: 20%vh;
+            transform: translate(-50%,-50%);
+        }
+
+        form input[type="text"],.box input[type="text"]{
+border: 0;
+background: none;
+display: block;
+margin:10px auto;
+text-align: center;
+border: 2px solid red;
+padding: 15px 10px;
+width: 200px;
+color: black;
+outline: none;
+border-radius: 24px;
+transition: 0.25s;
+}
+
+form input[type="text"]:focus,.box input[type="text"]:focus{
+    width: 280px;
+    border-color:blue;
+}
+
+form input[type="submit"]{
+    border: 0;
+background: none;
+display: block;
+margin:5px auto;
+text-align: center;
+border: 2px solid green;
+padding: 5px 5px;
+width: 100px;
+color: black;
+outline: none;
+border-radius: 14px;
+transition: 0.25s;
+border-color: #48ff00;
+}
+
+
+form input[type="submit"]:hover{
+    background-color:blue;
+    color: white;
+    width: 150px;
+}
+form h1{
+    color: black;
+    font-weight: 500;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+           position: relative;
+           left: 25%; 
+}
+    </style>
+</head>
+<body>
+    <form action="guestadd.php" method="POST" >
+       
+        <h1>Add Guest</h1>
+        <input type="text" name="guest_no" id="" placeholder="guest no" >
+        <input type="text" name="name" id="" placeholder="name" >
+        <input type="text" name="city" id="" placeholder="city">
+        
+        <input type="submit" value="add">
+    </form>
+
+</body>
+</html>

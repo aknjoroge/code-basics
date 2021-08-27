@@ -1,0 +1,81 @@
+* {
+  margin: 5;
+  padding: 0;
+}
+
+@media (max: width 600px) {
+  html {
+    font-size: 50rem;
+  }
+}
+
+@media (max: width 600px) {
+  html {
+    font-size: 50rem;
+  }
+}
+
+nav {
+  margin: 30px;
+  background-color: #9dff00;
+}
+nav::after {
+  /*the pseudo element is used to fix the collapse of the naviagtion element after float has been initialized to it*/
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.navigation {
+  /*when you use float the element in the nav collapse and thus loose its heignt it is fixed using nav 
+  pseudo element after above found in the mixin*/
+  float: left;
+  list-style: none;
+  /*since li are a child of navigation they are called by writting them inside the selector of the parent
+  ie Below is the nesting property of sass: select li inside the navigation.
+  */
+}
+.navigation li {
+  display: inline-block;
+  margin-left: 30px;
+  /*the & takes the PATH above it in this case .navigation li  thus &: means 
+    .navigation li:last-child,
+  */
+}
+.navigation li:last-child {
+  margin: 0px;
+}
+.navigation li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: grey;
+}
+
+.btn-hot:link, .btn-main:link {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: 100px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #eee;
+}
+
+.buttons {
+  float: right;
+}
+
+.btn-main:link {
+  background-color: #f1b612;
+}
+.btn-main:hover {
+  background-color: #ac810a;
+}
+
+.btn-hot:link {
+  background-color: #f80a9d;
+}
+.btn-hot:hover {
+  background-color: #f93cb1;
+}/*# sourceMappingURL=sstyle.css.map */

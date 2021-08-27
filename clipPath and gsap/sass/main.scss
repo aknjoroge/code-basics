@@ -1,0 +1,68 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    height: 100vh; //initail container
+    font-family: 'Courier New', Courier, monospace;
+}
+
+//get clip paths at https://bennettfeely.com/clippy/
+/* You cannot use random clip paths cause they will not be animated 
+the hover / to change values must be consistent to enable animation
+only change*/
+/*
+can change x and y
+clip-path: polygon(7% 7%, X Y ,93% 93%,7% 93%) ;
+*/
+
+/* the Hover effect is commented out because here we use Gsap and js*/
+// body:hover .container{
+//     // clip-path: polygon(7% 7%,93% 7%,93% 93%,7% 93%) ;
+//     clip-path: polygon(7% 7%,25% 75%,93% 93%,7% 93%) ;
+
+// }
+
+
+.container,.container2{
+    height: 100vh;
+    position: absolute;
+    //width must be set when we specify position abosolute
+   
+    clip-path: polygon(0 0,100% 0,100% 100%,0 100%) ;
+    // transition: clip-path 3s; transition for clip path but I use all
+    transition: all 3s;
+    width: 100%;
+
+
+    
+    .img{
+        background-color: red;
+        background-image: url(../img/ship-starry-sky-night-sea-photoshop-11570133415pgmbbhsvxu.jpg);
+        background-size: cover;
+        height: 100vh;
+    }
+    .content{
+        position: absolute;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        width: 100%;
+        .h1{
+            font-size: 4rem;
+            position: absolute;
+
+        }
+    }
+}
+
+/*more sequence animations are created using Gsap and js*/
+
+.container2{
+    clip-path: polygon(7% 7%,93% 7%,93% 93%,7% 93%) ;
+    z-index: -1;
+    .img{
+        background-image: url(../img/seashore_aerial_view_4k_2-3840x2160.jpg);
+    }
+}

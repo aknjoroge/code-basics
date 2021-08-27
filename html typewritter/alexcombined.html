@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <style>
+ 
+    </style>
+  
+</head>
+<!-- <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/> -->
+
+  
+<body>
+  <div id="typedtext" style=" font-family: Montserrat;
+  /* font-family: 'Waiting for the Sunrise', cursive;  */
+  font-size:30px; 
+ 
+  letter-spacing: 6px; 
+  font-weight: bold;" ></div>
+
+<p>
+    
+    <a style="font-size:20px;   font-family: Anonymous Pro, monospace;  text-decoration: none; color:black" href="" class="typewrite" data-period="850" data-type='[  "a WEB DESIGNER.", "an ANDROID DEVELOPER.", "a GADGET GEEK.","an UI DESIGNER" ,"a..CEO."]'>
+      <span class="wrap"></span>
+    </a>
+</p>
+
+
+<h3 style=" font-family: Montserrat;
+font-size:10px; 
+letter-spacing: 1px; 
+font-weight: bold;" id="typedtext_a"></h3>
+  
+</body>
+
+
+<script>
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
+
+//script two
+    // set up text to print, each item in array is new line
+    var aText = new Array(
+"ALEXANDER KARANJA."
+);
+var iSpeed = 110; // time delay of print out
+var iIndex = 0; // start printing array at this posision
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter_c()
+{
+sContents =  ' ';
+iRow = Math.max(0, iIndex-iScrollAt);
+var destination = document.getElementById("typedtext");
+
+while ( iRow < iIndex ) {
+sContents += aText[iRow++] + '<br />';
+}
+destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+if ( iTextPos++ == iArrLength ) {
+iTextPos = 0;
+iIndex++;
+if ( iIndex != aText.length ) {
+iArrLength = aText[iIndex].length;
+setTimeout("typewriter_c()", 500);
+}
+} else {
+setTimeout("typewriter_c()", iSpeed);
+}
+}
+
+document.addEventListener('DOMContentLoaded',function timeFunction(){
+    setTimeout(typewriter_c,2000);
+},false);
+
+
+
+
+
+
+  </script>
+
+
+ 
+<script>
+    // set up text to print, each item in array is new line
+var dText = new Array(
+"I am a software developer who's undertaking a bachelor degree in Information Technology @<a href='www.maseno.ac.ke'>Maseno University</a>,I have a talent in art and am passionate in developing websites and android apps.My Goal is to build Great Softwares That help Ease Peoples hardships"
+);
+var iSpeed_a = 15; // time delay of print out
+var iIndex_a = 0; // start printing array at this posision
+var iArrLength = dText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter_g()
+{
+sContents =  ' ';
+iRow = Math.max(0, iIndex_a-iScrollAt);
+var destination = document.getElementById("typedtext_a");
+
+while ( iRow < iIndex_a ) {
+sContents += dText[iRow++] + '<br />';
+}
+destination.innerHTML = sContents + dText[iIndex_a].substring(0, iTextPos) + "_";
+if ( iTextPos++ == iArrLength ) {
+iTextPos = 0;
+iIndex_a++;
+if ( iIndex_a != dText.length ) {
+iArrLength = dText[iIndex_a].length;
+setTimeout("typewriter_g()", 500);
+}
+} else {
+setTimeout("typewriter_g()", iSpeed_a);
+}
+}
+
+
+typewriter_g();
+</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+     body{
+   background: #34495e; font-family: sans-serif; margin:0;
+}
+.one{
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 10%;
+    left: 35%;
+   text-align: center;
+    background:#191919;
+
+}
+.one input[type="text"],.box input[type="text"]{
+border: 0;
+background: none;
+display: block;
+margin:10px auto;
+text-align: center;
+border: 2px solid #3498db;
+padding: 15px 10px;
+width: 200px;
+color: white;
+outline: none;
+border-radius: 24px;
+transition: 0.25s;
+
+}
+.one input[type="password"],.box input[type="password"]{
+border: 0;
+background: none;
+display: block;
+margin:10px auto;
+text-align: center;
+border: 2px solid #3498db;
+padding: 15px 10px;
+width: 200px;
+color: white;
+outline: none;
+border-radius: 24px;
+transition: 0.25s;
+
+}
+.one input[type="text"]:focus,.box input[type="text"]:focus{
+    width: 250px;
+    border-color: #2ecc71;
+}
+.one input[type="submit"]{
+    border: 0;
+background: none;
+display: block;
+margin:5px auto;
+text-align: center;
+border: 2px solid #3498db;
+padding: 5px 5px;
+width: 100px;
+color: white;
+outline: none;
+border-radius: 14px;
+transition: 0.25s;
+border-color: #48ff00;
+
+}
+
+</style>
+</head>
+<body>
+    <div class="one">
+    <form action="parentlogin.php" method="POST">
+    
+        <label style="color:honeydew; font-size: 1-px;">PARENTS LOGIN</label><br>
+        <br>
+        <input type="text" name="user" placeholder="username" style="color: floralwhite;"/>
+    
+       
+            <input type="password" name="password" placeholder="password" 
+            style="color: floralwhite;"/><br>
+        
+        <input type="submit" name="submit" value="LOGIN" />
+        </form>
+    </div>
+       
+        
+</body>
+</html>

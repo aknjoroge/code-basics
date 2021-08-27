@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <style>
+ 
+    </style>
+  
+</head>
+  
+<body>
+  <div id="typedtext" style=" font-family: Montserrat;
+  /* font-family: 'Waiting for the Sunrise', cursive;  */
+  font-size:30px; 
+ 
+  letter-spacing: 6px; 
+  font-weight: bold;" ></div>
+
+
+</body>
+
+<script>
+    // set up text to print, each item in array is new line
+var aText = new Array(
+"ALEXANDER KARANJA."
+);
+var iSpeed = 110; // time delay of print out
+var iIndex = 0; // start printing array at this posision
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter_c()
+{
+sContents =  ' ';
+iRow = Math.max(0, iIndex-iScrollAt);
+var destination = document.getElementById("typedtext");
+
+while ( iRow < iIndex ) {
+sContents += aText[iRow++] + '<br />';
+}
+destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+if ( iTextPos++ == iArrLength ) {
+iTextPos = 0;
+iIndex++;
+if ( iIndex != aText.length ) {
+iArrLength = aText[iIndex].length;
+
+}
+} else {
+setTimeout("typewriter_c()", iSpeed);
+}
+}
+
+document.addEventListener('DOMContentLoaded',function timeFunction(){
+    setTimeout(typewriter_c,2000);
+},false);
+
+
+
+
+// typewriter_c();
+</script>
+</html>

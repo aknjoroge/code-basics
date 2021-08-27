@@ -1,0 +1,93 @@
+
+<!--THIS document add entries into the Hotel table-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   
+    <title>Document</title>
+
+<!--Basic styling used You can replace with Yours-->
+    <style>
+        body{
+            background-color:thistle;
+        }
+        
+        form{
+            align-items: center;
+            align-content: center;
+            position: absolute;
+            width: 400px;
+            background-color: #191919;
+            left: 50%;
+            top: 50%;
+            height: 20%vh;
+            transform: translate(-50%,-50%);
+        }
+
+        form input[type="text"],.box input[type="text"]{
+border: 0;
+background: none;
+display: block;
+margin:10px auto;
+text-align: center;
+border: 2px solid #3498db;
+padding: 15px 10px;
+width: 200px;
+color: white;
+outline: none;
+border-radius: 24px;
+transition: 0.25s;
+}
+
+form input[type="text"]:focus,.box input[type="text"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+form input[type="submit"]{
+    border: 0;
+background: none;
+display: block;
+margin:5px auto;
+text-align: center;
+border: 2px solid #3498db;
+padding: 5px 5px;
+width: 100px;
+color: white;
+outline: none;
+border-radius: 14px;
+transition: 0.25s;
+border-color: #48ff00;
+}
+
+
+form input[type="submit"]:hover{
+    background-color: white;
+    color: black;
+}
+form h1{
+    color: white;
+    font-weight: 500;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+           position: relative;
+           left: 25%; 
+}
+    </style>
+
+
+</head>
+<body>
+    <!--The Form below send its data (POST method) to a php file called hoteladd.php -->
+    <!--The input fields have names that are used to refer to them in the hoteladd.php file -->
+    <form action="hoteladd.php" method="POST" >
+        <h1>Input Hotel</h1>
+        <input type="text" name="hotel_no"  placeholder="hotel_no" >
+        <input type="text" name="hotel_name"  placeholder="hotel_name">
+        <input type="text" name="hotel_city"  placeholder="hotel_city">
+        <input type="submit" value="save">
+    </form>
+
+</body>
+</html>

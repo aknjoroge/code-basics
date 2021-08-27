@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+  
+</head>
+<!-- <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/> -->
+
+  
+<body>
+  <h3 style=" font-family: Montserrat;
+  font-size:10px; 
+  letter-spacing: 1px; 
+  font-weight: bold;" id="typedtext_a"></h3>
+</body>
+<script>
+    // set up text to print, each item in array is new line
+var dText = new Array(
+" rem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras d "
+
+);
+var iSpeed_a = 15; // time delay of print out
+var iIndex_a = 0; // start printing array at this posision
+var iArrLength = dText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter_g()
+{
+sContents =  ' ';
+iRow = Math.max(0, iIndex_a-iScrollAt);
+var destination = document.getElementById("typedtext_a");
+
+while ( iRow < iIndex_a ) {
+sContents += dText[iRow++] + '<br />';
+}
+destination.innerHTML = sContents + dText[iIndex_a].substring(0, iTextPos) + "_";
+if ( iTextPos++ == iArrLength ) {
+iTextPos = 0;
+iIndex_a++;
+if ( iIndex_a != dText.length ) {
+iArrLength = dText[iIndex_a].length;
+setTimeout("typewriter_g()", 500);
+}
+} else {
+setTimeout("typewriter_g()", iSpeed_a);
+}
+}
+
+
+typewriter_g();
+</script>
+</html>
